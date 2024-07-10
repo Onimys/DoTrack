@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "dotrack.projects"
+version = "0.1.0"
+description = ""
+authors = ["n-fom <s.pozdnyakov@ase-ec.ru>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.111.0"
+SQLAlchemy = {extras = ["asyncio"], version = "^2.0.31"}
+alembic = "^1.13.2"
+pydantic-settings = "^2.3.4"
+psycopg2-binary = "^2.9.9"
+asyncpg = "^0.29.0"
+sqlalchemy-crud-plus = "^0.0.3"
+
+[tool.poetry.dev-dependencies]
+ruff = "^0.2.2"
+isort = "^5.13.2"
+taskipy = "^1.13.0"
+
+[tool.taskipy.tasks]
+dev = "fastapi dev"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

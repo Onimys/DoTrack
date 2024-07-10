@@ -1,0 +1,18 @@
+{
+  "exclude": ["**/__pycache__", "**/migrations/", "**/alembic"],
+
+  "ignore": ["**/*_pb2*"],
+
+  "defineConstant": {
+    "DEBUG": true
+  },
+
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "reportUnknownVariableType": false,
+  "reportUnknownMemberType": false,
+  "reportOptionalMemberAccess": "warning",
+
+  "pythonVersion": "3.10",
+  "pythonPlatform": "All"
+}
