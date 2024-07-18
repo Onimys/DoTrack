@@ -167,3 +167,7 @@ cython_debug/
 # Workspace
 .vscode/*
 !.vscode/settings.json
+
+# logs
+*.log
+logs/

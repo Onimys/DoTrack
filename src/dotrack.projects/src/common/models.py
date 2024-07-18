@@ -1,8 +1,10 @@
 from datetime import datetime
 from typing import Annotated
+from uuid import UUID
 
 from sqlalchemy import inspect
 from sqlalchemy.orm import DeclarativeBase, Mapped, declared_attr, mapped_column
+from sqlalchemy.sql import func
 
 convention = {
     "ix": "ix_%(column_0_label)s",
@@ -17,6 +19,19 @@ id_ = Annotated[
     int,
     mapped_column(
         primary_key=True, index=True, autoincrement=True, nullable=False, unique=True, sort_order=-999, comment="id"
+    ),
+]
+
+uuid_ = Annotated[
+    UUID,
+    mapped_column(
+        primary_key=True,
+        index=True,
+        server_default=func.gen_random_uuid(),
+        nullable=False,
+        unique=True,
+        sort_order=-999,
+        comment="id",
     ),
 ]
 
@@ -40,8 +55,8 @@ class BaseModel(DeclarativeBase):
 
 
 class DateTimeMixin:
-    create_date: Mapped[datetime] = mapped_column(default=datetime.now(), sort_order=999, comment="created_at")
-    update_date: Mapped[datetime | None] = mapped_column(onupdate=datetime.now, sort_order=999, comment="updated_at")
+    create_date: Mapped[datetime] = mapped_column(server_default=func.now(), sort_order=999, comment="created_at")
+    update_date: Mapped[datetime | None] = mapped_column(onupdate=func.now(), sort_order=999, comment="updated_at")
 
 
 class DeletedAtMixin:

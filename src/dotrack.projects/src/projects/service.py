@@ -1,11 +1,6 @@
-from typing import Sequence
-
-from sqlalchemy import select
-
-from src.core.db import AsyncSession
-from src.projects.models import Projects
+from src.core.services import DatabaseService
+from src.projects.repository import ProjectRepository
 
 
-async def get_all_projects(session: AsyncSession) -> Sequence[Projects]:
-    result = await session.execute(select(Projects))
-    return result.scalars().all()
+class ProjectService(DatabaseService[ProjectRepository]):
+    repository_type = ProjectRepository

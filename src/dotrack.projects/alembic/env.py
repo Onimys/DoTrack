@@ -9,8 +9,8 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from alembic import context
+from src.common.models import BaseModel
 from src.core.settings import settings
-from src.models import BaseModel  # noqa
 
 for _, pkg, is_pkg in pkgutil.iter_modules([os.path.normpath(os.path.dirname(__file__) + "/../src/")]):
     try:

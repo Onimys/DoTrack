@@ -1,7 +1,7 @@
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from src.models import BaseModel, DeletedAtMixin, id_
+from src.common.models import BaseModel, DeletedAtMixin, id_
 
 
 class Projects(DeletedAtMixin, BaseModel):

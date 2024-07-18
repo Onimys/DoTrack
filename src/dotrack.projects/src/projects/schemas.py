@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import ConfigDict
 
-from src.schema import SchemaBase
+from src.common.schema import SchemaBase
 
 
 class ProjectSchemaBase(SchemaBase):
@@ -21,4 +21,4 @@ class ProjectsSchema(ProjectSchemaBase):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
-    delete_date: datetime | None
+    delete_date: datetime | None = None

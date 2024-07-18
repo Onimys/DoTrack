@@ -13,14 +13,25 @@ pydantic-settings = "^2.3.4"
 psycopg2-binary = "^2.9.9"
 asyncpg = "^0.29.0"
 sqlalchemy-crud-plus = "^0.0.3"
+PyJWT = "^2.8.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+bcrypt = "4.0.1"
+pytest = "^8.2.2"
 
 [tool.poetry.dev-dependencies]
 ruff = "^0.2.2"
 isort = "^5.13.2"
 taskipy = "^1.13.0"
+aiosqlite = "^0.20.0"
+pytest-asyncio = "^0.23.7"
+pytest-mock = "^3.14.0"
 
 [tool.taskipy.tasks]
-dev = "fastapi dev"
+dev = "export RUN_MODE=\"DEV\" & fastapi dev main.py --host 127.0.0.1 --port 8888"
+prod = "fastapi run"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
